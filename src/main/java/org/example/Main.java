@@ -10,26 +10,27 @@ public class Main {
     private static void Task1() {
         IntegerListImpl integerArrayList = new IntegerListImpl();
 
-        integerArrayList.add(1);
-        integerArrayList.add(2);
+        integerArrayList.add(11);
+        integerArrayList.add(24);
         integerArrayList.add(3);
-        integerArrayList.add(4);
-        integerArrayList.add(5);
+        integerArrayList.add(14);
+        integerArrayList.add(25);
         integerArrayList.add(6);
-        integerArrayList.add(7);
-        integerArrayList.add(8);
-        integerArrayList.add(9);
+        integerArrayList.add(47);
+        integerArrayList.add(81);
+        integerArrayList.add(19);
         integerArrayList.add(10);
-        integerArrayList.add(0, 0);
-        integerArrayList.set(1, 111);
+        //integerArrayList.add(0, 0);
+        //integerArrayList.set(1, 111);
 
         System.out.println(integerArrayList);
-        System.out.println("Size: " + integerArrayList.size());
+        //System.out.println("Size: " + integerArrayList.size());
 
-        integerArrayList.clear();
+        //integerArrayList.clear();
+        integerArrayList.sort();
 
         System.out.println(integerArrayList);
-        System.out.println("Size: " + integerArrayList.size());
+        //System.out.println("Size: " + integerArrayList.size());
     }
 
     private static void Task2() {
@@ -39,6 +40,7 @@ public class Main {
         Integer[] arr1 = Arrays.copyOf(arr, arr.length);
         Integer[] arr2 = Arrays.copyOf(arr, arr.length);
         Integer[] arr3 = Arrays.copyOf(arr, arr.length);
+        Integer[] arr4 = Arrays.copyOf(arr, arr.length);
 
         long start;
 
@@ -56,6 +58,10 @@ public class Main {
         start = System.currentTimeMillis();
         integerArrayList.sortSelection(arr3);
         System.out.println("sortSelection time: " + (System.currentTimeMillis() - start));
+
+        start = System.currentTimeMillis();
+        integerArrayList.quickSort(arr4, 0, arr4.length - 1);
+        System.out.println("quickSort time: " + (System.currentTimeMillis() - start));
     }
 
     private static void Task3() {

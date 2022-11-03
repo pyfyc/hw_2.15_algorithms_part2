@@ -25,7 +25,7 @@ public class IntegerListImpl implements IntegerList {
         validateIndex(index);
 
         if (size == storage.length) {
-            storage = grow(size + 1);
+            storage = grow(size + size / 2);
         }
 
         System.arraycopy(storage, index, storage, index + 1, size - index);
@@ -69,7 +69,7 @@ public class IntegerListImpl implements IntegerList {
     @Override
     public boolean contains(Integer item) {
         Integer[] storageCopy = toArray();
-        sortInsertion(storageCopy);
+        quickSort(storageCopy, 0, size - 1);
         return binarySearch(storageCopy, item);
     }
 
@@ -222,5 +222,34 @@ public class IntegerListImpl implements IntegerList {
             }
         }
         return false;
+    }
+
+    public void quickSort(Integer[] arr, int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(arr, begin, end);
+
+            quickSort(arr, begin, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, end);
+        }
+    }
+
+    private int partition(Integer[] arr, int begin, int end) {
+        int pivot = arr[end];
+        int i = (begin - 1);
+
+        for (int j = begin; j < end; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+
+                swapElements(arr, i, j);
+            }
+        }
+
+        swapElements(arr, i + 1, end);
+        return i + 1;
+    }
+
+    public void sort() {
+        quickSort(storage, 0, size - 1);
     }
 }
